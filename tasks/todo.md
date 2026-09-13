@@ -733,3 +733,7 @@ Adjusted hero lighting to balance the angled screenshot: left-side soft teal-whi
 ### Wide-screen space and wrapping correction (待用户手测)
 
 Expanded content from the 1160px cap to a responsive 1600/1800px container, with 32/48px outer gutters. Narrative column now has 320–370px minimum width rather than 230–250px. Chinese scene headline stays on one line; English shortened to “From brief to real work.” Below 1100px the narrative sits above the screenshot instead of becoming a narrow column. Verified 1536px main width 1472px and single-line headline; checked 320/1100/1920 no overflow. Original screenshots and directional light retained. Next: visual user review.
+
+### Unified homepage composition (待用户手测)
+
+Rebuilt hero structure instead of enlarging the existing scene: intro/download/collaboration grouped left, screenshot capped at760px right, callout below complete image. Replaced accumulated scene overrides; versioned asset URLs to prevent stale CSS. Verified Chinese 320/768/1024/1536/1920 widths, English1920/320 screenshots, image/full-size link, JS syntax and diff whitespace. At1536 and1920 hero stays717px tall. Preview http://127.0.0.1:4387/. No App changes/deployment. Next: user's visual acceptance of this complete composition.

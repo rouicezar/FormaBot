@@ -55,3 +55,9 @@ User requested a more creative presentation. Hero now pairs an original screensh
 Lighting revision: directional diffuse light on the left balances the screenshot's right-side weight; upper-left white highlights and lower-right blue-gray shadow share a consistent light direction. Reduced perspective/rotation slightly. This is CSS composition only; original screenshots unchanged. Desktop inspected, 320px overflow check passed; visual acceptance pending.
 
 Wide-screen correction: increased container cap to 1600px (1800px on larger screens), minimum narrative column 320/370px, and stacked layout below 1100px. Chinese short headline remains one line; English copy shortened. At 1536px viewport, content uses 1472px and headline height equals one 35px line. Verified no overflow at 320/1100/1920px. Pending user review.
+
+## Unified hero layout acceptance candidate
+
+Rebuilt the HTML hierarchy: one left intro contains headline, explanation, download action and collaboration narrative; one right figure contains the bounded screenshot and its captions. Removed accumulated scene/lighting/wide-screen overrides and replaced them with one responsive composition. Figure capped at 760px; original aspect ratio retained, callout below the window. Directional neutral/green light and grounded shadow retained. At <=900px content stacks; phones remove perspective. Added CSS/JS version query to avoid stale preview assets.
+
+Runtime checks: Chinese 320/768/1024/1536/1920px all without horizontal overflow. Desktop hero height 717px at both 1536 and 1920px, screenshot visual width about746px; it no longer grows indefinitely. Inspected English 1920px and 320px screenshots; mobile no overflow, original image width2712 and English full-image link correct. Chinese scene title is no longer split into a dangling character on desktop. JS syntax and git diff checks passed. User visual acceptance remains pending; no public deployment.
