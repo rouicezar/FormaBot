@@ -17,3 +17,8 @@ header,main,footer{max-width:1560px;width:calc(100% - 64px)}
 @media(prefers-reduced-motion:reduce){.hero-shot .scene-window>a{transition:none}}
 .hero-intro{grid-column:1;grid-row:1}.hero-shot{grid-column:2;grid-row:1}.hero-bottom p{max-width:none}@media(max-width:900px){.hero-intro{grid-column:1;grid-row:1}.hero-shot{grid-column:1;grid-row:2}}
 .hero{align-items:start}.hero-intro{padding-top:24px}.hero-shot{max-width:760px}@media(max-width:900px){.hero-intro{padding-top:0}.hero-shot{max-width:680px}}
+
+/* Development status and contribution invitation. */
+.development-note { padding: 18px 0; border-top: 1px solid #e8e8e8; font-size: 14px; line-height: 1.65; color: #666; }
+.development-note p { margin: 0 0 6px; max-width: none; }
+.development-note a { color: #287bc1; white-space: nowrap; }

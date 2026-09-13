@@ -6,6 +6,8 @@ FormaBot 是面向 AI 成员协作的本地桌面工作空间。创建持久 Bot
 
 ## 当前状态
 
+FormaBot 正处于积极开发阶段，部分功能仍在完善中。欢迎 Fork 项目进行探索与改进，或通过 [GitHub Issues](https://github.com/rouicezar/FormaBot/issues) 反馈问题、提出建议，共同推动项目发展。
+
 **开发预览，尚非稳定发行版。** 当前验证平台是 macOS Apple Silicon。任务控制、可信交付、浏览器审批、国际化与分发门禁见[发布就绪报告](docs/release-readiness.md)。构建通过不等于发行验收完成。
 
 ## 功能

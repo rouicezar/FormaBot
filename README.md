@@ -6,6 +6,8 @@ FormaBot is a local desktop workspace for AI teammates. Create persistent bots a
 
 ## Project status
 
+FormaBot is under active development, and some features may not yet be complete. We welcome you to fork the project, contribute improvements, and report bugs or suggest features through [GitHub Issues](https://github.com/rouicezar/FormaBot/issues).
+
 **Development preview — not a stable release.** The current validated platform is macOS on Apple Silicon. Task-control, delivery recovery, browser approval, localization, and distribution gates remain tracked in the [release readiness report](docs/release-readiness.md). A successful build does not mean these gates have passed.
 
 ## Capabilities

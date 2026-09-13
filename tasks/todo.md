@@ -741,3 +741,7 @@ Rebuilt hero structure instead of enlarging the existing scene: intro/download/c
 ### Website published — 2026-09-13
 
 User accepted current website for initial hosting (“推送，托管到github吧，就先这样”). Fast-forwarded main to06a5abc, enabled GitHub Pages workflow hosting, dispatched pages.yml. Run34760436129 succeeded. Public URL https://rouicezar.github.io/FormaBot/ returns200; Chinese PNG returns200; live browser verified default English and Chinese language/image switch without broken images. Deployment contains website/ only. Website visual approval for this initial release does not close App production acceptance gates. Future website deployments use manual workflow dispatch.
+
+### Approved development notice — 2026-09-13
+
+User approved bilingual development-status and contribution wording. Added it to the matching English/Chinese README status sections and a compact website notice before the closing download section, using existing language switching and an Issues link. Desktop App unchanged. Copy and JS syntax/diff checks passed; publish through pages.yml.
