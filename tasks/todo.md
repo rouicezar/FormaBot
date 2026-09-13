@@ -701,3 +701,11 @@ E01 已交付根状态/人工 FIFO/拒绝跨会话合并；本片补齐最后缺
 修复主窗口关闭即退出：macOS 红色关闭隐藏主窗口并保留进程，Dock 激活恢复同一窗口，显式退出仍停止任务并清理资源。设置新增常规 → 语言（简体中文/English），保存语言偏好，不刷新窗口，不翻译用户对话与产物；设置、主界面常用控件、右键菜单和工具步骤接入类型化资源。
 
 100 项测试、类型检查、打包 UI 回归和原生关闭/恢复/语言持久化专项通过，证据及边界见 `docs/internationalization.md`。原生审批、运行时错误与部分动态描述仍未全量翻译；活跃真实模型任务中的关闭/切换尚未新增实测。构建 `build/s1a/mac-arm64/FormaBot.app` / 0.1.0，提交见 build-info.json。请复测红色关闭 → Dock 恢复，以及设置 → 常规 → 语言；仍停在反馈切片，未 push 或发布。
+
+### Product website first preview (2026-09-13 — 待用户手测)
+
+Website-only slice on public history 2ffbc6d. Inspected running desktop UI, then aligned website with the App gray/white palette, official three-Bot F, colored silhouette members, gray bubbles and blue file links. English/Chinese presentation, labeled interactive sample, guide/download/feedback entries and manual Pages workflow are prepared. No App code, private content or release workflow changed.
+
+Runnable website: http://127.0.0.1:4387/ (website/index.html). Browser checked 320/768/1024/1440 widths, language persistence and file-preview focus; no captured console warnings/errors. JS syntax check passed. See docs/website-design.md for evidence and limits. This website slice does not require rebuilding the unchanged desktop App.
+
+Await user visual acceptance; no public deployment yet. Next: address visual feedback, then enable Pages and dispatch the prepared workflow under the existing hosting authorization. Do not treat automated checks as user acceptance.

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#42464a"/><stop offset=".48" stop-color="#26282b"/><stop offset="1" stop-color="#141618"/></linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="#c7cbce"/><stop offset=".18" stop-color="#777d82"/><stop offset=".48" stop-color="#272b2f"/><stop offset="1" stop-color="#090b0d"/></linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2=".55" y2="1"><stop stop-color="#ffffff"/><stop offset=".24" stop-color="#f4f5f7"/><stop offset=".7" stop-color="#d7dbe0"/><stop offset="1" stop-color="#9ea5ae"/></linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2=".4" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#b1b6bd"/></linearGradient>
+    <linearGradient id="eye" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#34383d"/><stop offset="1" stop-color="#101214"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="150%" height="155%"><feDropShadow dx="4" dy="12" stdDeviation="10" flood-color="#000" flood-opacity=".55"/></filter>
+    <g id="eyes">
+      <rect width="28" height="49" rx="14" fill="url(#eye)" stroke="#959ba2" stroke-width="2"/>
+      <rect x="57" width="28" height="49" rx="14" fill="url(#eye)" stroke="#959ba2" stroke-width="2"/>
+      <circle cx="9" cy="10" r="3.5" fill="#fff" opacity=".9"/><circle cx="66" cy="10" r="3.5" fill="#fff" opacity=".9"/>
+    </g>
+  </defs>
+  <rect x="72" y="72" width="880" height="880" rx="196" fill="url(#rim)"/>
+  <rect x="77" y="77" width="870" height="870" rx="191" fill="url(#tile)" stroke="#8e959c" stroke-opacity=".22" stroke-width="2"/>
+  <g filter="url(#shadow)" stroke="url(#edge)" stroke-width="4" stroke-linejoin="round">
+    <!-- A broad teammate forms the top arm and curved shoulder. -->
+    <path d="M242 470V343C242 252 320 211 410 211H704C761 211 795 248 795 301V327C795 371 765 403 718 403H451C400 403 380 423 371 447C326 420 282 441 242 470Z" fill="url(#silver)"/>
+    <!-- A shorter teammate docks into the middle arm. -->
+    <path d="M457 419H711C758 419 779 452 779 501C779 548 750 580 706 580H516C478 580 463 559 456 526L433 458C427 438 438 419 457 419Z" fill="url(#silver)"/>
+    <!-- An upright teammate completes the stem. -->
+    <path d="M243 536C243 491 276 453 317 447C364 440 409 480 409 534V744C409 793 377 825 326 825C277 825 243 795 243 746Z" fill="url(#silver)"/>
+  </g>
+  <use href="#eyes" x="658" y="282"/>
+  <use href="#eyes" x="650" y="474"/>
+  <use href="#eyes" x="282" y="547"/>
+</svg>
