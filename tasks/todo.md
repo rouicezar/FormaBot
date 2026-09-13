@@ -2,7 +2,7 @@
 
 ## First public preview publication
 
-User authorized source push and a downloadable GitHub Release. Current source uses English filenames and bilingual README links, retains third-party notices, and excludes private development history from the first public commit. GitHub Actions builds macOS arm64, tests, packages a DMG, and publishes the latest-preview prerelease with checksums. Local checks: 123 tests, typecheck, build and source audit passed. Cloud build and downloadable asset verification pending. Existing Figma and product acceptance limitations remain open.
+User authorized source push and a downloadable GitHub Release. Current source uses English filenames and bilingual README links, retains third-party notices, and excludes private development history from the first public commit. GitHub Actions builds macOS arm64, tests, packages a DMG, and publishes the latest-preview prerelease with checksums. Local checks: 123 tests, typecheck, build and source audit passed. Cloud run 34749272091 built and tested the installer successfully. The release step hit a GitHub HTTP 502; the same cloud artifact was downloaded, SHA-256 verified, checked with hdiutil, and uploaded to latest-preview. The release contains the DMG, SHA256SUMS.txt and SOURCE_COMMIT.txt. A cloud retry was queued separately. No production configuration or API keys were included. Existing Figma and product acceptance limitations remain open.
 
 ## 工具卡片 UI 与连接失败反馈（2026-09-13，待用户复测）
 - 工具卡片四向留白、独立按钮区和主按钮，扫描按钮与卡片保留间距。打包几何断言要求底部/左侧/扫描间距至少 16px，截图 `.tmp/mcp-settings-x7XEq6/tools.png` 已人工查看。

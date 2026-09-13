@@ -62,3 +62,9 @@ Next implementation slice is complete application localization as specified in `
 ## Authorized preview publication
 
 The user explicitly authorized pushing the reviewed source and publishing downloadable development previews on GitHub. This supersedes the prior no-upload preparation boundary for previews only. Stable-release readiness remains open. The first public commit excludes private development history; local history is retained. The workflow builds on macos-15 arm64 and publishes latest-preview with the source commit and SHA-256 checksums.
+
+### First public preview result
+
+Public source commit: `5d04eb10cee4ee74f64a3f257b9f780a538f4a1f`. GitHub run 34749272091 passed source checks, types, 123 tests, license generation, and DMG packaging. GitHub returned HTTP 502 while creating the release, so the exact cloud artifact was retrieved and uploaded to [latest-preview](https://github.com/rouicezar/FormaBot/releases/tag/latest-preview). Local SHA-256 and hdiutil validation passed. The release includes DMG, checksums and source commit. A cloud retry was queued; successful packaging and downloadable publication are distinct from a fully green first workflow attempt.
+
+All 224 published paths were checked; no production model configuration, credential store, database or detected key material was included. Pattern scans are not a proof against every possible secret. The cloud build uses a fresh runner without local user data. Signing/notarization and the known product issues remain open.
