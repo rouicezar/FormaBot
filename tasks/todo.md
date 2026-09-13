@@ -709,3 +709,7 @@ Website-only slice on public history 2ffbc6d. Inspected running desktop UI, then
 Runnable website: http://127.0.0.1:4387/ (website/index.html). Browser checked 320/768/1024/1440 widths, language persistence and file-preview focus; no captured console warnings/errors. JS syntax check passed. See docs/website-design.md for evidence and limits. This website slice does not require rebuilding the unchanged desktop App.
 
 Await user visual acceptance; no public deployment yet. Next: address visual feedback, then enable Pages and dispatch the prepared workflow under the existing hosting authorization. Do not treat automated checks as user acceptance.
+
+### Website compact layout feedback (2026-09-13 — 待用户手测)
+
+Reworked hero, three-column capabilities, guide/FAQ and closing CTA into a compact App-aligned layout. Removed reconstructed UI and unfinished media references; pending recording is explicitly labeled. Old rejected two-member recordings moved to .tmp/rejected-media, excluded from website delivery. English/Chinese 320px rendering, English 768/1440px overflow and image checks, language persistence, FAQ interaction and JS syntax verified. Preview: http://127.0.0.1:4387/. Desktop code unchanged; no App rebuild needed. Next: user visual feedback, then resume English → Chinese full-window real task recording and 10–20-second editing; do not deploy pending website acceptance.

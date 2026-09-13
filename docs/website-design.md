@@ -25,3 +25,11 @@ Verified browser rendering at 320, 768, 1024 and 1440 CSS pixels with no documen
 Pages API currently returns 404: no existing Pages site was confirmed. A separate manual-dispatch Pages workflow is prepared, publishing only website/. It has not been dispatched; public deployment awaits visual acceptance. Existing build.yml unchanged.
 
 User check: inspect desktop and phone layout, switch language, click Ask / Follow the work / Open the file, inspect the sample preview, and follow guide/download/feedback links. Confirm visual consistency with the App before enabling Pages and deploying this website.
+
+## Compact layout revision — 2026-09-13 (supersedes illustration preview)
+
+User paused recording to prioritize layout. Removed the reconstructed App illustration and its CSS/JS, and removed references to unfinished case media. The case currently presents the planned five-person brief with an explicit recording-pending notice. Rejected earlier two-member media are outside website/ and will not ship. No successful execution or finished video is claimed.
+
+Desktop hero uses two columns; capability rows become three columns; guide and FAQ share a compact two-column rhythm; closing CTA is a short horizontal band. Unified 1160px container, 32px section padding (26px mobile), native system typography, App gray/white colors and official icon. Mobile collapses to readable single columns.
+
+Verified current page at 320/768/1440px: no horizontal overflow or broken images. English page heights were 2854/1880/1730px respectively (without forthcoming video). Chinese 320px also has no overflow; language persisted after reload and FAQ opened. JS syntax check passed. App and release workflow unchanged. Await visual review at http://127.0.0.1:4387/; no public deployment. Next media phase: English first, then Chinese, each 10–20 seconds, whole native window, genuine five-person successful run, no failed/retry run footage.
