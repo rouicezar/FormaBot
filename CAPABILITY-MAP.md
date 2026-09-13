@@ -13,4 +13,3 @@ FormaBot 是基于 Electron 的桌面工作空间，以 DeepSeek Harness 承载�
 | agent-runtime | 成员配置、模型工具循环、任务队列、取消、重试和恢复 | model-providers, execution-tools |
 | team-collaboration | 私聊、群组、消息路由、成员委派、上下文共享策略 | agent-runtime |
 | desktop-app | 配置、成员/群聊、授权入口、任务状态和产物预览 | team-collaboration |
-
