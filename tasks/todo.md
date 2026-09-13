@@ -745,3 +745,7 @@ User accepted current website for initial hosting (“推送，托管到github�
 ### Approved development notice — 2026-09-13
 
 User approved bilingual development-status and contribution wording. Added it to the matching English/Chinese README status sections and a compact website notice before the closing download section, using existing language switching and an Issues link. Desktop App unchanged. Copy and JS syntax/diff checks passed; publish through pages.yml.
+
+### Developer social contacts — 2026-09-13
+
+User approved publication of bilingual developer contact copy. Added X @ericbuszhang (linked) and AI樟榆树 on Douyin, Xiaohongshu, WeChat Channels and Bilibili to both READMEs and the translated website development notice. No App changes. Validate HTML translations and publish through Pages.
