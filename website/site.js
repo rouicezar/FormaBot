@@ -3,6 +3,12 @@ function translate(next) {
   language = next;
   document.documentElement.lang = next === 'en' ? 'en' : 'zh-CN';
   document.querySelectorAll('[data-en]').forEach(element => { element.innerHTML = element.dataset[next]; });
+  const imagePath = `./media/task-${next}.png`;
+  document.querySelector('#task-image').src = imagePath;
+  document.querySelector('#task-image').alt = next === 'en' ? 'Full FormaBot window: five-member team, task conversation and delivered proposal preview' : 'FormaBot 完整窗口：五人团队、需求分析与研究文件交付';
+  document.querySelector('#task-image-link').href = imagePath;
+  document.querySelector('#task-image-link').setAttribute('aria-label', next === 'en' ? 'View full-size App screenshot' : '查看 App 完整原图');
+  document.querySelector('#task-full-size').href = imagePath;
   const toggle = document.querySelector('#language');
   toggle.textContent = next === 'en' ? '中文' : 'EN';
   toggle.setAttribute('aria-label', next === 'en' ? 'Switch to Chinese' : 'Switch to English');
