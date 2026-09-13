@@ -737,3 +737,7 @@ Expanded content from the 1160px cap to a responsive 1600/1800px container, with
 ### Unified homepage composition (待用户手测)
 
 Rebuilt hero structure instead of enlarging the existing scene: intro/download/collaboration grouped left, screenshot capped at760px right, callout below complete image. Replaced accumulated scene overrides; versioned asset URLs to prevent stale CSS. Verified Chinese 320/768/1024/1536/1920 widths, English1920/320 screenshots, image/full-size link, JS syntax and diff whitespace. At1536 and1920 hero stays717px tall. Preview http://127.0.0.1:4387/. No App changes/deployment. Next: user's visual acceptance of this complete composition.
+
+### Website published — 2026-09-13
+
+User accepted current website for initial hosting (“推送，托管到github吧，就先这样”). Fast-forwarded main to06a5abc, enabled GitHub Pages workflow hosting, dispatched pages.yml. Run34760436129 succeeded. Public URL https://rouicezar.github.io/FormaBot/ returns200; Chinese PNG returns200; live browser verified default English and Chinese language/image switch without broken images. Deployment contains website/ only. Website visual approval for this initial release does not close App production acceptance gates. Future website deployments use manual workflow dispatch.
