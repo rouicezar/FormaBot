@@ -713,3 +713,7 @@ Await user visual acceptance; no public deployment yet. Next: address visual fee
 ### Website compact layout feedback (2026-09-13 — 待用户手测)
 
 Reworked hero, three-column capabilities, guide/FAQ and closing CTA into a compact App-aligned layout. Removed reconstructed UI and unfinished media references; pending recording is explicitly labeled. Old rejected two-member recordings moved to .tmp/rejected-media, excluded from website delivery. English/Chinese 320px rendering, English 768/1440px overflow and image checks, language persistence, FAQ interaction and JS syntax verified. Preview: http://127.0.0.1:4387/. Desktop code unchanged; no App rebuild needed. Next: user visual feedback, then resume English → Chinese full-window real task recording and 10–20-second editing; do not deploy pending website acceptance.
+
+### Website line wrapping feedback (待用户手测)
+
+Removed forced line breaks in both languages. Headings use available row width; guide steps align in three columns, FAQ no longer reserves an empty left column, section vertical padding reduced to 24px. Natural wrapping remains on narrow screens. Verified Chinese and English at 320/768/1440px without horizontal overflow. English 1440px page height now 1545px versus 1730px in the preceding layout (same pending-media state). Preview refreshed in Chinese; recording remains paused by user request.
