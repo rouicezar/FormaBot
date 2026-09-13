@@ -729,3 +729,7 @@ Added perspective to the real screenshot, soft dimensional shadow/light, bilingu
 ### Directional light balance (待用户手测)
 
 Adjusted hero lighting to balance the angled screenshot: left-side soft teal-white light mass, upper-left edge highlights and right-lower grounding shadow. Reduced desktop rotation from 1.4deg to 0.8deg and Y perspective from -8deg to -6deg. Original screenshot unchanged. Inspected rendered desktop and checked 320px no horizontal overflow; no deployment. Next: user review of light/image balance.
+
+### Wide-screen space and wrapping correction (待用户手测)
+
+Expanded content from the 1160px cap to a responsive 1600/1800px container, with 32/48px outer gutters. Narrative column now has 320–370px minimum width rather than 230–250px. Chinese scene headline stays on one line; English shortened to “From brief to real work.” Below 1100px the narrative sits above the screenshot instead of becoming a narrow column. Verified 1536px main width 1472px and single-line headline; checked 320/1100/1920 no overflow. Original screenshots and directional light retained. Next: visual user review.
