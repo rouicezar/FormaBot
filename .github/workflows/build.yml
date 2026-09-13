@@ -46,8 +46,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           if ! gh release view latest-preview >/dev/null 2>&1; then
-            gh release create latest-preview --target "$GITHUB_SHA" --prerelease --title "Latest development preview" --notes-file docs/preview-release-notes.md
+            gh release create latest-preview --target "$GITHUB_SHA" --title "FormaBot 0.1.0 — Development Preview" --notes-file docs/preview-release-notes.md
           fi
           gh api --method PATCH "repos/$GITHUB_REPOSITORY/git/refs/tags/latest-preview" -f sha="$GITHUB_SHA" -F force=true
-          gh release edit latest-preview --prerelease --title "Latest development preview" --notes-file docs/preview-release-notes.md
+          gh release edit latest-preview --prerelease=false --latest --title "FormaBot 0.1.0 — Development Preview" --notes-file docs/preview-release-notes.md
           gh release upload latest-preview build/github/*.dmg build/github/SHA256SUMS.txt build/github/SOURCE_COMMIT.txt --clobber

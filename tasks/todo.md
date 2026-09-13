@@ -1,5 +1,9 @@
 # 当前整改待办
 
+## Release sidebar visibility correction
+
+The public release already contained the DMG and checksums but was marked prerelease. Changed GitHub metadata to a regular latest release so the repository sidebar can show the download entry. The title and notes retain development-preview and unsigned/notarized limitations; this does not claim stable-product acceptance. Updated the publishing workflow to preserve this metadata.
+
 ## First public preview publication
 
 User authorized source push and a downloadable GitHub Release. Current source uses English filenames and bilingual README links, retains third-party notices, and excludes private development history from the first public commit. GitHub Actions builds macOS arm64, tests, packages a DMG, and publishes the latest-preview prerelease with checksums. Local checks: 123 tests, typecheck, build and source audit passed. Cloud run 34749272091 built and tested the installer successfully. The release step hit a GitHub HTTP 502; the same cloud artifact was downloaded, SHA-256 verified, checked with hdiutil, and uploaded to latest-preview. The release contains the DMG, SHA256SUMS.txt and SOURCE_COMMIT.txt. A cloud retry was queued separately. No production configuration or API keys were included. Existing Figma and product acceptance limitations remain open.
