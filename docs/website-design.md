@@ -51,3 +51,5 @@ The main hero displays the corresponding locale image uncropped and links to the
 ## Dimensional product scene
 
 User requested a more creative presentation. Hero now pairs an original screenshot with short bilingual collaboration copy, restrained role-color chips, a shared-brief label and a local-delivery callout. CSS perspective/rotation and layered shadows create depth; screenshot bytes and full-image links remain unchanged. Background uses a soft neutral radial light instead of blurred duplicated UI. Phones remove perspective and put the callout below the image; reduced-motion disables hover transitions. Inspected English desktop/mobile and Chinese desktop, verified 320/768/1440px no horizontal overflow and original images load. Pending visual user review, no deployment.
+
+Lighting revision: directional diffuse light on the left balances the screenshot's right-side weight; upper-left white highlights and lower-right blue-gray shadow share a consistent light direction. Reduced perspective/rotation slightly. This is CSS composition only; original screenshots unchanged. Desktop inspected, 320px overflow check passed; visual acceptance pending.

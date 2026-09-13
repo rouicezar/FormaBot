@@ -725,3 +725,7 @@ Video cancelled. Used user-provided 21.23.28 English and 21.22.18 Chinese iShot 
 ### Homepage depth and creative layout (待用户手测)
 
 Added perspective to the real screenshot, soft dimensional shadow/light, bilingual role narrative and local-delivery callout. Kept screenshot originals and full-size links; narrow phones use straight readable images. Verified responsive widths and rendered English desktop/mobile plus Chinese desktop. Preview stays at http://127.0.0.1:4387/. Next: user visual review; no App changes or deployment.
+
+### Directional light balance (待用户手测)
+
+Adjusted hero lighting to balance the angled screenshot: left-side soft teal-white light mass, upper-left edge highlights and right-lower grounding shadow. Reduced desktop rotation from 1.4deg to 0.8deg and Y perspective from -8deg to -6deg. Original screenshot unchanged. Inspected rendered desktop and checked 320px no horizontal overflow; no deployment. Next: user review of light/image balance.
