@@ -721,3 +721,7 @@ Removed forced line breaks in both languages. Headings use available row width; 
 ### User screenshots integrated (待用户手测)
 
 Video cancelled. Used user-provided 21.23.28 English and 21.22.18 Chinese iShot originals; language toggle switches hero image and full-size links. Complete windows remain uncropped; same image softly blended into hero background. Current local preview refreshed in Chinese. JS syntax/diff checks, image loading, source/link switching and 320/768/1440 overflow checks passed. Next: user visual review of screenshot scale and background integration; no new recording required. Images represent real task moments, not a clean end-to-end completion claim.
+
+### Homepage depth and creative layout (待用户手测)
+
+Added perspective to the real screenshot, soft dimensional shadow/light, bilingual role narrative and local-delivery callout. Kept screenshot originals and full-size links; narrow phones use straight readable images. Verified responsive widths and rendered English desktop/mobile plus Chinese desktop. Preview stays at http://127.0.0.1:4387/. Next: user visual review; no App changes or deployment.
