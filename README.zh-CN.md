@@ -40,7 +40,7 @@ npm run package:dir
 
 ## 文档与许可
 
-[需求](docs/requirements.md) · [架构](CAPABILITY-MAP.md) · [状态](docs/status.md) · [计划](tasks/plan.md) · [发布门禁](docs/release-readiness.md)
+[架构](CAPABILITY-MAP.md) · [预览版状态与限制](docs/release-readiness.md) · [发行说明](docs/preview-release-notes.md)
 
 在设置 → 常规 → 语言中选择简体中文或 English，设置与常用工作台控件即时切换并保存。原生审批、运行时错误和剩余动态描述仍待完整本地化。
 

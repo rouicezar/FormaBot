@@ -25,7 +25,7 @@ Cloud inference requires a supported provider and an API key. Local execution do
 
 ## Installation
 
-Development installers are prepared for [GitHub Releases](https://github.com/rouicezar/FormaBot/releases). Check the release's validation status and SHA-256 checksums before use. Public distribution is pending the release gates; do not assume that a local preview has Developer ID signing or Apple notarization.
+Development installers are prepared for [GitHub Releases](https://github.com/rouicezar/FormaBot/releases). Check the release's validation status and SHA-256 checksums before use. Current previews are unsigned and not notarized.
 
 ## Development
 
@@ -42,15 +42,12 @@ npm run package:dir
 
 ## Documentation
 
-- [Requirements](docs/requirements.md)
 - [Architecture](CAPABILITY-MAP.md)
-- [Acceptance status](docs/status.md)
-- [Development plan](tasks/plan.md)
-- [Release readiness](docs/release-readiness.md)
-- [Internationalization design](docs/internationalization.md)
+- [Preview status and known limitations](docs/release-readiness.md)
+- [Release notes](docs/preview-release-notes.md)
 - [Commercial licensing](docs/commercial-licensing.md)
 
-Choose English or Simplified Chinese in Settings → General → Language. Settings and common workspace controls switch without restarting. Full localization of native approvals, runtime errors and remaining dynamic descriptions is still in progress; see the internationalization status.
+Choose English or Simplified Chinese in Settings → General → Language. Settings and common workspace controls switch without restarting. Full localization of native approvals, runtime errors and remaining dynamic descriptions is still in progress; see the preview limitations above.
 
 ## License
 

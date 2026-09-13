@@ -18,3 +18,12 @@ browser-profiles/
 runtime-data/
 *.pem
 *.key
+
+# Local engineering records; only public documentation is tracked.
+/AGENTS.md
+/tasks/
+/docs/*
+!/docs/licenses/
+!/docs/commercial-licensing.md
+!/docs/preview-release-notes.md
+!/docs/release-readiness.md

@@ -1,6 +1,8 @@
-# 能力模块图 / Capability map
+# Architecture / 架构
 
-状态：既定模块边界继续有效，执行内核为 DeepSeek Harness；原型已实现部分业务，正在工程化整改。实际能力/缺陷见 [状态矩阵](docs/status.md)，顺序见 [整改计划](tasks/plan.md)。
+FormaBot is an Electron desktop workspace. DeepSeek Harness powers member execution. The following responsibility map describes module boundaries, not a guarantee that every capability has passed acceptance. See [preview limitations](docs/release-readiness.md).
+
+FormaBot 是基于 Electron 的桌面工作空间，以 DeepSeek Harness 承载成员执行。下表说明模块职责，不代表所有能力均已通过验收。
 
 | 模块 ID | 职责 | 依赖 |
 | --- | --- | --- |
@@ -12,11 +14,3 @@
 | team-collaboration | 私聊、群组、消息路由、成员委派、上下文共享策略 | agent-runtime |
 | desktop-app | 配置、成员/群聊、授权入口、任务状态和产物预览 | team-collaboration |
 
-构建顺序：底层存储和授权 → 模型接入/执行工具 → 单成员真实任务 → 多成员协作 → 桌面完整体验。
-最简桌面壳从 M0 开始，逐步接入各模块，不等待团队模块完成。模型配置、目录选择和任务入口直接在 App 内提供；视觉打磨在执行回归后开始。
-
-模块接口在边界确认后细化；优先在单一应用内划分模块，不预设微服务或多个部署单元。
-
-扩展能力沿用以上模块：local-state 保存能力来源/版本/配置与凭据引用；execution-tools 承载 MCP/插件适配和统一检查；agent-runtime 按需发现工具和加载 Skill；desktop-app 提供连接及生命周期入口。详细边界见 [能力管理设计](docs/capability-management.md)，任务 E11。当前已实现本机发现清单，Skill启停/快照/按需读取已完成自动及真实模型验证，待手测；MCP与安装生命周期仍待后续实现。
-
-2026-09-10细化：team-collaboration负责稳定成员/群、事件投递、语义注意力和任务所有权；agent-runtime只执行受控成员回合，不能成为第二个状态真相源。desktop-app新增更新状态呈现，local-state负责版本迁移，execution-tools承载浏览器选择及页面接管；图像材料进入model-providers真实输入。新需求分别归E12/E13，完整设计见[后端架构](docs/backend-architecture.md)及[更新与选区](docs/updates-and-browser-selection.md)，没有因此宣称实现。
