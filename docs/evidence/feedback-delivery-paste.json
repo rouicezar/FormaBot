@@ -1,0 +1,35 @@
+{
+  "status": "awaiting-user-test",
+  "tests": 114,
+  "testFiles": 30,
+  "typecheck": "passed",
+  "distFilesMatched": 13,
+  "deliveryLive": {
+    "directory": ".tmp/live-delivery-register-uyweEe",
+    "files": [
+      "check.md",
+      "check.pl"
+    ],
+    "status": "completed"
+  },
+  "imageLive": {
+    "directory": ".tmp/live-paste-DwmZQ9",
+    "randomTextRecognized": true,
+    "status": "responded",
+    "syntheticPasteEvent": true,
+    "systemClipboardModified": false,
+    "imageOnly": true
+  },
+  "validation": {
+    "directory": ".tmp/paste-validation-9EX9FA",
+    "boundGroupModel": true,
+    "failedSendKeepsImage": true,
+    "invalidImageRejected": true
+  },
+  "limits": [
+    "native macOS Cmd+V awaits manual test",
+    "no historical status rewrites",
+    "native tool discovery and installation not implemented",
+    "verbose group replies not fully resolved"
+  ]
+}

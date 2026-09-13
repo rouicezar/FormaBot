@@ -1,0 +1,32 @@
+import { _electron as electron } from 'playwright-core';
+import assert from 'node:assert/strict';
+import {mkdtemp,mkdir,writeFile} from 'node:fs/promises';
+import {resolve,join} from 'node:path';
+const dir=await mkdtemp(resolve('.tmp/scoped-ui-')),a=join(dir,'project-a'),b=join(dir,'project-b'),c=join(dir,'project-c');
+for(const path of [a,b,c])await mkdir(path);
+const env={...process.env,FORMABOT_TEST_DATA_DIR:join(dir,'data')};delete env.ELECTRON_RUN_AS_NODE;
+const executablePath=resolve('build/s1a/mac-arm64/FormaBot.app/Contents/MacOS/FormaBot');let app;
+const unwrap=r=>{assert.equal(r.ok,true,r.error);return r.value;};
+try{
+ app=await electron.launch({executablePath,env});let page=await app.firstWindow();await page.locator('#api-key').fill('ui-fixture-not-a-model-key');await page.getByRole('button',{name:'保存配置',exact:true}).click();
+ const picker=async(path,canceled=false,response=0)=>app.evaluate(({dialog},v)=>{dialog.showOpenDialog=async()=>({canceled:v.canceled,filePaths:v.canceled?[]:[v.path]});dialog.showMessageBox=async()=>({response:v.response});}, {path,canceled,response});
+ await picker(a);unwrap(await page.evaluate(()=>window.forma.chooseWorkspace()));await page.locator('#workbench').waitFor();
+ const base=unwrap(await page.evaluate(()=>window.forma.createConversation({name:'代码审查 A',role:'核验真实代码',kind:'bot',members:[]})));const aid=base.selected;
+ assert.equal(base.conversationWorkspaces[aid].path,a);
+ await picker(b,true);assert.equal(unwrap(await page.evaluate(()=>window.forma.pickConversationWorkspace())),null);
+ await picker(b,false,1);assert.equal((await page.evaluate(()=>window.forma.pickConversationWorkspace())).ok,false);
+ assert.equal((await page.evaluate(path=>window.forma.createConversation({name:'篡改',role:'test',kind:'bot',members:[],workspaceToken:path}),b)).ok,false);
+ await picker(b);const token=unwrap(await page.evaluate(()=>window.forma.pickConversationWorkspace()));
+ const next=unwrap(await page.evaluate(({token,aid})=>window.forma.createConversation({name:'代码审查 B',role:'核验真实代码',kind:'bot',members:[],workspaceToken:token,sourceBotId:aid}),{token:token.token,aid}));const bid=next.selected;
+ assert.equal(next.conversationWorkspaces[bid].path,b);assert.equal(next.conversationWorkspaces[bid].authorized,true);assert.equal(next.messages.length,0);
+ assert.equal((await page.evaluate(({bid,token})=>window.forma.updateConversation({id:bid,name:'代码审查 B',role:'修改空间',workspaceToken:token}),{bid,token:token.token})).ok,false);
+ assert.equal((await page.evaluate(token=>window.forma.createConversation({name:'重放',role:'test',kind:'bot',members:[],workspaceToken:token}),token.token)).ok,false);
+ await page.waitForFunction(()=>document.querySelector('#conversation-list [aria-current=true]')?.getAttribute('aria-label')==='代码审查 B');await page.locator('#current-workspace').click();assert.equal(await page.locator('#pick-conversation-workspace').isVisible(),false);await page.locator('#dialog-cancel').click();
+ await picker(c);const changed=unwrap(await page.evaluate(()=>window.forma.chooseWorkspace()));assert.equal(changed.conversationWorkspaces[aid].path,a);assert.equal(changed.conversationWorkspaces[bid].path,b);
+ const future=unwrap(await page.evaluate(()=>window.forma.createConversation({name:'新默认项目',role:'test',kind:'bot',members:[]})));assert.equal(future.conversationWorkspaces[future.selected].path,c);
+ await picker(b);const reuse=unwrap(await page.evaluate(()=>window.forma.pickConversationWorkspace()));const group=unwrap(await page.evaluate(({aid,token})=>window.forma.createConversation({name:'项目 B 群',role:'test',kind:'group',members:[aid],workspaceToken:token}),{aid,token:reuse.token}));assert.equal(group.effectiveWorkspace.path,b);assert.equal(group.conversationWorkspaces[aid].path,a);
+ const event=app.waitForEvent('window');await page.locator('#settings-open').click();const settings=await event;await settings.getByRole('tab',{name:'模型',exact:true}).waitFor();assert.equal((await settings.evaluate(()=>window.forma.createConversation({name:'非法入口',role:'test',kind:'bot',members:[]}))).ok,false);await settings.getByRole('tab',{name:'模型',exact:true}).focus();await settings.keyboard.press('ArrowRight');await settings.getByRole('heading',{name:'默认工作空间',exact:true}).waitFor();await settings.screenshot({path:join(dir,'settings.png')});await settings.close();
+ await page.screenshot({path:join(dir,'fixed-project.png')});await app.close();app=await electron.launch({executablePath,env});page=await app.firstWindow();await page.locator('#workbench').waitFor();const restored=unwrap(await page.evaluate(()=>window.forma.state()));assert.equal(restored.conversationWorkspaces[aid].path,a);assert.equal(restored.conversationWorkspaces[bid].path,b);assert.equal(restored.model.hasKey,true);
+ await writeFile(join(dir,'evidence.json'),JSON.stringify({passed:true,fixtureOnly:true,checks:['cancel','deny','arbitrary-path-rejected','single-use-token','fixed-binding','new-default-only','group-priority','settings-IPC','keyboard-tabs','restart-preserves-settings'],a,b,c},null,2));
+ console.log(`PASS fixed project UI/IPC and restart. No model execution. ${dir}`);
+}finally{await app?.close();}

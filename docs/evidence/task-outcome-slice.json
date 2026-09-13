@@ -1,0 +1,73 @@
+{
+  "hostAfter": {
+    "directory": "/Users/rouice/.codex/worktrees/a224/FormaBot/.tmp/comprehensive-audit-QhsZvN",
+    "baseline": "a8c51788b7237970b6e01800c1753d77f516058f",
+    "modelExecution": false,
+    "productionDataRead": false,
+    "routing": {
+      "participants": 3,
+      "plain": 1,
+      "explicit": 1
+    },
+    "silentOutcome": {
+      "status": "silent",
+      "text": "本轮成员未公开回复。"
+    },
+    "silentJobs": [
+      "silent"
+    ],
+    "timeout": {
+      "status": "interrupted",
+      "text": "fixture timeout"
+    },
+    "noFileCompletion": {
+      "status": "completed",
+      "text": "done"
+    },
+    "changedHashAccepted": {
+      "missing": [],
+      "empty": []
+    },
+    "memoryChain": {
+      "expected": 3,
+      "actual": [
+        "two",
+        "three"
+      ]
+    },
+    "teamRevision": {
+      "purpose": "Original\n协调人：Boss。2 位专业成员向协调人汇报，协调人对用户负责。",
+      "roles": [
+        "Write\n向协调人 Boss 汇报工作；遵循所在工作空间已有授权。",
+        "Review\n向协调人 Boss 汇报工作；遵循所在工作空间已有授权。"
+      ]
+    },
+    "managerUpdate": {
+      "returned": true,
+      "saved": null
+    },
+    "historyVisible": 100,
+    "heldAfterRestart": "held"
+  },
+  "ui": [
+    {
+      "status": "silent",
+      "label": "已处理 · 成员判断无需发言",
+      "memberStatus": "silent"
+    },
+    {
+      "status": "interrupted",
+      "label": "上次任务中断，未自动重跑",
+      "memberStatus": "interrupted"
+    }
+  ],
+  "tests": {
+    "files": 29,
+    "passed": 104
+  },
+  "typecheck": "passed",
+  "packageDistFiles": 13,
+  "packageMismatches": [],
+  "modelExecution": false,
+  "userAcceptance": "pending"
+}

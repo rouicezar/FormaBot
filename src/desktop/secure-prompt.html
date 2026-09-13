@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>安全输入</title>
+<style>
+body{font:13px/1.6 system-ui,sans-serif;margin:0;padding:20px;color:#333}
+p{margin:0 0 12px}
+input{width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid #ccc;border-radius:7px;font-size:13px}
+.row{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+button{padding:7px 16px;border:1px solid #ccc;border-radius:7px;background:#fff;cursor:pointer}
+button.primary{background:#0a7cff;border-color:#0a7cff;color:#fff}
+</style>
+</head>
+<body>
+<p id="message"></p>
+<form id="form">
+<input id="secret" type="password" autocomplete="off" autofocus>
+<div class="row"><button type="button" id="cancel">取消</button><button type="submit" class="primary">填入页面</button></div>
+</form>
+<script>
+document.getElementById('message').textContent=decodeURIComponent(location.hash.slice(1));
+document.getElementById('cancel').onclick=()=>window.forma.secureSubmit(null);
+document.getElementById('form').onsubmit=e=>{e.preventDefault();const v=document.getElementById('secret').value;if(v)window.forma.secureSubmit(v);};
+</script>
+</body>
+</html>

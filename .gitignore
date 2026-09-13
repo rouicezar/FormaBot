@@ -1,0 +1,20 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+build/
+target/
+coverage/
+*.log
+.tmp/
+.local/
+playwright-report/
+test-results/
+# Runtime identities, sessions and credentials must never enter source control.
+.auth/
+browser-profiles/
+runtime-data/
+*.pem
+*.key

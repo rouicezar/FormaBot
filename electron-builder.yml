@@ -1,0 +1,24 @@
+appId: app.formabot.desktop
+productName: FormaBot
+asar: false
+npmRebuild: false
+electronDist: node_modules/electron/dist
+directories:
+  output: build
+files:
+  - dist/**/*
+  - package.json
+  - LICENSE
+  - THIRD_PARTY_NOTICES.md
+extraResources:
+  - from: .local/runtime
+    to: runtime
+  - from: node_modules/electron/dist/LICENSE
+    to: licenses/LICENSE-electron
+  - from: node_modules/electron/dist/LICENSES.chromium.html
+    to: licenses/LICENSES.chromium.html
+mac:
+  icon: assets/app/icon.icns
+  target: dir
+  identity: null
+  category: public.app-category.productivity

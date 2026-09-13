@@ -1,0 +1,53 @@
+name: Build latest macOS preview
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: macos-preview-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 26.7.0
+          cache: npm
+      - run: npm ci
+      - run: npm run setup:dev
+      - run: node scripts/audit-release-source.mjs
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm test
+      - run: node scripts/generate-third-party-notices.mjs
+      - name: Build development installer
+        run: npx electron-builder --mac dmg --arm64 --publish never --config.directories.output=build/github
+      - name: Record source and checksums
+        run: |
+          printf '%s\n' "$GITHUB_SHA" > build/github/SOURCE_COMMIT.txt
+          cd build/github
+          shasum -a 256 *.dmg > SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FormaBot-macOS-arm64-${{ github.sha }}
+          path: |
+            build/github/*.dmg
+            build/github/SHA256SUMS.txt
+            build/github/SOURCE_COMMIT.txt
+          if-no-files-found: error
+          retention-days: 30
+      - name: Publish downloadable preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view latest-preview >/dev/null 2>&1; then
+            gh release create latest-preview --target "$GITHUB_SHA" --prerelease --title "Latest development preview" --notes-file docs/preview-release-notes.md
+          fi
+          gh api --method PATCH "repos/$GITHUB_REPOSITORY/git/refs/tags/latest-preview" -f sha="$GITHUB_SHA" -F force=true
+          gh release edit latest-preview --prerelease --title "Latest development preview" --notes-file docs/preview-release-notes.md
+          gh release upload latest-preview build/github/*.dmg build/github/SHA256SUMS.txt build/github/SOURCE_COMMIT.txt --clobber

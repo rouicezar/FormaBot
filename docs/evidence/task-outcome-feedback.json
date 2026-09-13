@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-13",
+  "status": "awaiting-user-retest",
+  "tests": {
+    "files": 30,
+    "passed": 109,
+    "typecheck": "passed",
+    "build": "passed"
+  },
+  "package": {
+    "path": "build/task-outcome-r3/mac-arm64/FormaBot.app",
+    "version": "0.1.0",
+    "matchingDistFiles": 13
+  },
+  "isolatedUi": {
+    "directory": ".tmp/outcome-ui-MaFlDk",
+    "modelExecution": false,
+    "checks": [
+      "full Bot name rendered in identity color",
+      "click selects correct Bot conversation",
+      "inline code unchanged",
+      "silent and interrupted state retained"
+    ]
+  },
+  "regression": [
+    "mention and everyone messages reuse held dependency job",
+    "blocked predecessor does not release layout",
+    "completed predecessor runs layout once"
+  ],
+  "manualObservation": [
+    "user confirmed pressing stop",
+    "silent notification persisted as silent",
+    "stopped review and layout persisted as stopped"
+  ],
+  "limits": [
+    "new real-model wording awaits user test",
+    "historical bare member aliases not guessed",
+    "full team attention scheduling remains open"
+  ]
+}

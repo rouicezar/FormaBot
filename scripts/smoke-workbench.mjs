@@ -1,0 +1,35 @@
+import {_electron as electron} from 'playwright-core';
+import {mkdtemp,mkdir,readFile} from 'node:fs/promises';
+import {resolve,join} from 'node:path';
+import assert from 'node:assert/strict';
+const dir=await mkdtemp(resolve('.tmp/workbench-ui-')),workspace=join(dir,'workspace');await mkdir(workspace);
+const env={...process.env,FORMABOT_TEST_DATA_DIR:dir};delete env.ELECTRON_RUN_AS_NODE;
+let app;const launch={args:['.'],env,timeout:30000};
+try{
+ app=await electron.launch(launch);let page=await app.firstWindow();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.locator('#settings').waitFor();assert.equal(await page.locator('#workbench').isVisible(),false);
+ await page.locator('#api-key').fill('formabot-storage-test-not-a-real-api-key');await page.getByRole('button',{name:'保存配置',exact:true}).click();
+ await page.getByText('已保存密钥，页面不会显示已存储的 Key。',{exact:true}).waitFor();
+ assert.equal(await page.locator('#workbench').isVisible(),false,'Workspace is still required');
+ await app.evaluate(({dialog},workspace)=>{dialog.showOpenDialog=async()=>({canceled:false,filePaths:[workspace]});},workspace);
+ await page.locator('#choose-workspace').click();await page.locator('#workbench').waitFor();assert.equal(await page.locator('#settings').isVisible(),false);
+ await page.locator('#new-bot').click();await page.locator('#bot-name').fill('抖音运营');await page.locator('#bot-role').fill('负责抖音内容规划与数据复盘');await page.locator('#conversation-form button[type=submit]').click();
+ await page.getByRole('heading',{name:'抖音运营',exact:true}).waitFor();
+ await page.locator('#new-group').click();await page.locator('#bot-name').fill('内容团队');await page.locator('#bot-role').fill('完成内容计划');await page.getByRole('checkbox',{name:'抖音运营',exact:true}).check();await page.locator('#conversation-form button[type=submit]').click();
+ await page.getByRole('heading',{name:'内容团队',exact:true}).waitFor();assert.equal(await page.locator('#member option').count(),1);
+ await page.locator('#conversation-title').click();await page.getByRole('checkbox',{name:'助手',exact:true}).check();await page.locator('#conversation-form button[type=submit]').click();await page.waitForFunction(()=>document.querySelectorAll('#member option').length===2);
+ await page.locator('#conversation-title').click();await page.getByRole('checkbox',{name:'助手',exact:true}).uncheck();await page.locator('#conversation-form button[type=submit]').click();await page.waitForFunction(()=>document.querySelectorAll('#member option').length===1);
+ await page.locator('#toggle-right').click();await page.waitForFunction(()=>document.querySelector('#right').getBoundingClientRect().width>=400);
+ const drag=async(id,dx)=>{const box=await page.locator(id).boundingBox();await page.mouse.move(box.x+box.width/2,box.y+100);await page.mouse.down();await page.mouse.move(box.x+box.width/2+dx,box.y+100,{steps:8});await page.mouse.up();};
+ await drag('#resize-left',35);await drag('#resize-right',-40);
+ await page.locator('#close-left').click();await page.locator('#close-right').click();
+ await page.waitForFunction(()=>getComputedStyle(document.querySelector('#left')).visibility==='hidden'&&getComputedStyle(document.querySelector('#right')).visibility==='hidden');
+ const before=(await page.evaluate(()=>window.forma.state())).value;assert.ok(before.layout.left>=270);assert.ok(before.layout.right>=450);assert.equal(before.layout.leftOpen,false);assert.equal(before.layout.rightOpen,false);
+ await app.close();app=await electron.launch(launch);page=await app.firstWindow();await page.locator('#workbench').waitFor();
+ assert.equal(await page.locator('#settings').isVisible(),false);await page.getByRole('heading',{name:'内容团队',exact:true}).waitFor();
+ const after=(await page.evaluate(()=>window.forma.state())).value;assert.deepEqual(after.layout,before.layout);assert.equal(after.workspace.path,workspace);assert.equal(after.model.hasKey,true);
+ await page.locator('#toggle-left').click();await page.locator('#toggle-right').click();await page.locator('#settings-open').click();assert.equal(await page.locator('#api-key').inputValue(),'');await page.keyboard.press('Escape');assert.equal(await page.locator('#settings').isVisible(),false);
+ await page.screenshot({path:join(dir,'workbench.png')});assert.deepEqual(errors,[]);
+ const settings=await readFile(join(dir,'settings.json'),'utf8');assert.equal(settings.includes('formabot-storage-test-not-a-real-api-key'),false);
+ console.log(`PASS: onboarding -> workbench; persistent Bot/group, member selection, independent drawers, mouse resizers and restart; settings retain encrypted key. No model task was run. Evidence ${dir}/workbench.png`);
+}finally{await app?.close();}

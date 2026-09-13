@@ -1,0 +1,35 @@
+{
+  "name": "formabot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local AI team workspace",
+  "main": "dist/desktop/main.cjs",
+  "scripts": {
+    "setup:dev": "node scripts/prepare-runtime.mjs",
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "start": "npm run build && electron .",
+    "package:dir": "npm run setup:dev && npm run build && electron-builder --dir --mac --arm64",
+    "package:preview": "npm run setup:dev && npm run build && electron-builder --mac dmg --arm64 --publish never --config.directories.output=build/release-preview"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.1.2-rc.1",
+    "@deepseek-ai/dsh-llm-pi-ai": "0.1.2-rc.1",
+    "@deepseek-ai/dsh-sdk-client": "0.1.2-rc.1",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "dompurify": "3.4.15",
+    "marked": "18.0.12",
+    "playwright-core": "1.63.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.5.0",
+    "electron": "44.2.0",
+    "electron-builder": "26.15.3",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2",
+    "vitest": "5.0.0"
+  },
+  "license": "SEE LICENSE IN LICENSE"
+}
